@@ -1,0 +1,71 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative pt-20 pb-12 overflow-hidden">
+  <!-- Decorative top border -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-champagne/40 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <!-- Brand name, large and editorial -->
+    <div class="mb-16">
+      <p class="font-display text-4xl md:text-5xl text-ink/10 leading-tight select-none">
+        The Party<br />Architect
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 mb-16">
+      <!-- Contact -->
+      <div>
+        <p class="font-sans text-xs tracking-[0.15em] uppercase text-muted/60 font-semibold mb-4">Contact</p>
+        <div class="space-y-2">
+          <a href="mailto:kat@the-party-architect.com"
+             class="font-sans text-sm text-ink/70 hover:text-rose transition-colors block">
+            kat@the-party-architect.com
+          </a>
+          <a href="https://instagram.com/__thepartyarchitect" target="_blank" rel="noopener noreferrer"
+             class="font-sans text-sm text-ink/70 hover:text-rose transition-colors flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+            </svg>
+            @__thepartyarchitect
+          </a>
+        </div>
+      </div>
+
+      <!-- Destinations -->
+      <div>
+        <p class="font-sans text-xs tracking-[0.15em] uppercase text-muted/60 font-semibold mb-4">Sample Weekends</p>
+        <nav class="space-y-2" aria-label="Destinations">
+          <a href="/destinations/charleston" class="font-sans text-sm text-ink/70 hover:text-rose transition-colors block">Charleston</a>
+          <a href="/destinations/nashville" class="font-sans text-sm text-ink/70 hover:text-rose transition-colors block">Nashville</a>
+          <a href="/destinations/palm-springs" class="font-sans text-sm text-ink/70 hover:text-rose transition-colors block">Palm Springs</a>
+        </nav>
+      </div>
+
+      <!-- Quick link -->
+      <div>
+        <p class="font-sans text-xs tracking-[0.15em] uppercase text-muted/60 font-semibold mb-4">Ready?</p>
+        <a href="/#contact"
+           class="inline-flex items-center gap-2 font-sans text-sm font-semibold text-rose hover:text-rose-dark transition-colors">
+          Start planning
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-champagne/15">
+      <p class="font-sans text-xs text-muted/40">
+        &copy; {currentYear} The Party Architect
+      </p>
+      <p class="font-sans text-xs text-muted/40 italic">
+        Bachelorette planning, but make it aesthetic.
+      </p>
+    </div>
+  </div>
+</footer>

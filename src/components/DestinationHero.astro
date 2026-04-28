@@ -1,0 +1,66 @@
+---
+interface Props {
+  destination: string;
+  tagline: string;
+  vibe: string;
+  groupSize: string;
+  budget: string;
+  days: string;
+  heroImage?: string;
+  heroImageAlt?: string;
+}
+
+const { destination, tagline, vibe, groupSize, budget, days, heroImage, heroImageAlt } = Astro.props;
+---
+
+<section class="relative min-h-[70vh] flex items-end pb-16 md:pb-24 pt-32 overflow-hidden">
+  <!-- Hero background image -->
+  {heroImage && (
+    <div class="absolute inset-0" aria-hidden="true">
+      <img
+        src={heroImage}
+        alt={heroImageAlt || ''}
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-cream/70 via-cream/50 to-cream/95"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-cream/80 to-transparent"></div>
+    </div>
+  )}
+
+  <!-- Decorative elements (no-image fallback) -->
+  {!heroImage && (
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-blush/40 blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-champagne/30 to-transparent"></div>
+    </div>
+  )}
+
+  <div class="absolute inset-0 grain pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 md:px-12 w-full">
+    <!-- Back to home -->
+    <a href="/" class="inline-flex items-center gap-2 font-sans text-xs tracking-[0.15em] uppercase text-muted hover:text-rose transition-colors mb-10 group">
+      <svg class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      The Party Architect
+    </a>
+
+    <div class="flex items-center gap-4 mb-6">
+      <div class="h-px w-12 bg-rose"></div>
+      <p class="font-sans text-xs tracking-[0.15em] uppercase text-rose font-semibold">{tagline}</p>
+    </div>
+
+    <h1 class="font-display text-5xl md:text-8xl font-normal text-ink tracking-tight mb-8">
+      {destination}
+    </h1>
+
+    <div class="flex flex-wrap gap-3 font-sans text-xs tracking-wide text-muted">
+      <span class="border border-champagne/30 rounded-full px-4 py-2 bg-white/40 backdrop-blur-sm">{days}</span>
+      <span class="border border-champagne/30 rounded-full px-4 py-2 bg-white/40 backdrop-blur-sm">{groupSize}</span>
+      <span class="border border-champagne/30 rounded-full px-4 py-2 bg-white/40 backdrop-blur-sm">{budget}</span>
+      <span class="border border-champagne/30 rounded-full px-4 py-2 bg-white/40 backdrop-blur-sm">{vibe}</span>
+    </div>
+  </div>
+</section>

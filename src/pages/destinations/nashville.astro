@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import DestinationHero from '../../components/DestinationHero.astro';
+import Itinerary from '../../components/Itinerary.astro';
+import Footer from '../../components/Footer.astro';
+
+const days = [
+  {
+    day: 'Friday',
+    title: 'Arrive & set the tone',
+    items: [
+      'Check in and hand out welcome bags — custom embroidered hats for the whole crew.',
+      'Dinner at Etch (private room if available) — upscale but not uptight.',
+      'Broadway time: The Valentine for craft cocktails, then Jason Aldean\'s rooftop for the full Nashville experience.',
+    ],
+  },
+  {
+    day: 'Saturday',
+    title: 'All day, all night',
+    items: [
+      'Brunch at Biscuit Love — the biscuits are the reason.',
+      '12 South mural photos — get the content while the light is good.',
+      'Pontoon party cruise on the Cumberland (3 hours, DJ, BYOB).',
+      'Dinner at Henrietta Red in Germantown — seasonal, gorgeous, worth the trip.',
+      'Cocktails at Harriet\'s Rooftop at 1 Hotel — sunset views over the city.',
+    ],
+  },
+  {
+    day: 'Sunday',
+    title: 'Wind down & depart',
+    items: [
+      'Brunch at Milk & Honey — a more relaxed, cozy send-off.',
+      'Optional 12 South shopping or a last walk through Germantown.',
+      'Departures. Group text already planning the next one.',
+    ],
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Nashville Bachelorette Weekend Itinerary — Boots and Confetti',
+  description: 'A sample 3-day Nashville bachelorette weekend: pontoon cruise, Broadway nightlife, Southern brunch, and disco-cowgirl aesthetics.',
+  author: { '@type': 'Organization', name: 'The Party Architect' },
+  publisher: { '@type': 'Organization', name: 'The Party Architect' },
+};
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title="Nashville Bachelorette Itinerary — The Party Architect"
+    description="A curated 3-day Nashville bachelorette weekend: pontoon cruise, Broadway nightlife, Southern brunch. Custom-planned by The Party Architect."
+    ogType="article"
+    jsonLd={jsonLd}
+  />
+
+  <main>
+    <DestinationHero
+      destination="Nashville"
+      tagline="Boots and Confetti"
+      vibe="Full send"
+      groupSize="Group of 10"
+      budget="$800–$1,500/person"
+      days="3 days"
+      heroImage="https://images.unsplash.com/photo-1742769376474-a8e523b7c978?w=1920&q=80&auto=format&fit=crop"
+      heroImageAlt="Nashville downtown with neon signs at golden hour"
+    />
+
+    <section class="bg-blush/50 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto px-6 md:px-8">
+        <p class="font-sans text-base md:text-lg text-ink leading-relaxed mb-6">
+          Nashville is the bachelorette capital for a reason — live music, incredible food, rooftop bars, and an energy that makes even a Tuesday feel like a Saturday. But the best Nashville weekends aren't just "go to Broadway." They're curated: the right restaurants, the right timing, the right balance of party and recovery.
+        </p>
+        <p class="font-sans text-base md:text-lg text-ink leading-relaxed">
+          Here's a sample 3-day weekend I'd put together. It's a concept — yours would be fully custom based on your group, your budget, and how hard you want to go.
+        </p>
+      </div>
+    </section>
+
+    <Itinerary days={days} />
+
+    <section class="bg-blush/50 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto px-6 md:px-8">
+        <h2 class="font-display text-2xl md:text-3xl font-medium text-ink mb-8">Where to Stay</h2>
+        <div class="space-y-4 font-sans text-base text-ink leading-relaxed">
+          <p><strong class="font-semibold">The Joseph</strong> — luxury boutique in the Gulch, walkable to everything. ~$450–$650/night.</p>
+          <p><strong class="font-semibold">Bobby Hotel</strong> — rooftop pool, great bar, right on Printer's Alley. ~$350–$500/night.</p>
+          <p><strong class="font-semibold">Bode Nashville</strong> — apartment-style suites for groups of 8+ who want a shared home base.</p>
+        </div>
+
+        <h2 class="font-display text-2xl md:text-3xl font-medium text-ink mt-12 mb-8">The Aesthetic</h2>
+        <p class="font-sans text-base text-ink leading-relaxed">
+          White, denim, blush, and gold. Disco-cowgirl, but tasteful. Custom embroidered hats, monogrammed disco-ball cups, and a group photo that actually looks good.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 text-center">
+      <div class="max-w-xl mx-auto px-6 md:px-8">
+        <h2 class="font-display text-2xl md:text-3xl font-medium text-ink mb-4">Love this vibe?</h2>
+        <p class="font-sans text-base text-muted leading-relaxed mb-8">
+          This is just a sample. I'll build your Nashville weekend around your group, your budget, and your energy.
+        </p>
+        <a
+          href="/#contact"
+          class="inline-block bg-rose text-cream font-sans font-semibold tracking-wide
+                 py-3 px-8 rounded-lg
+                 hover:bg-rose/90 hover:scale-[1.02]
+                 active:scale-[0.99]
+                 transition-all duration-200"
+        >
+          Start planning
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

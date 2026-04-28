@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import DestinationHero from '../../components/DestinationHero.astro';
+import Itinerary from '../../components/Itinerary.astro';
+import Footer from '../../components/Footer.astro';
+
+const days = [
+  {
+    day: 'Friday',
+    title: 'Arrive & settle in',
+    items: [
+      'Check in and freshen up at the hotel or rental.',
+      'Lunch at Leon\'s Oyster Shop — casual, fun, perfect for a first-day vibe.',
+      'Sundress dinner at Husk or FIG — Southern fine dining at its best.',
+      'One drink at Citrus Club, the rooftop bar at The Dewberry, to close the night.',
+    ],
+  },
+  {
+    day: 'Saturday',
+    title: 'The main event',
+    items: [
+      'Slow morning — coffee, pastries, no alarms.',
+      'Charleston Harbor boat charter (4 hours) — champagne, sunshine, and the best views of the city.',
+      'Afternoon naps and pool time. You earned it.',
+      'Group dinner at The Ordinary — seafood, cocktails, and a gorgeous room.',
+      'One late drink at Republic Garden & Lounge.',
+    ],
+  },
+  {
+    day: 'Sunday',
+    title: 'Wind down & depart',
+    items: [
+      'Brunch at Millers All Day — the perfect send-off.',
+      'Optional: candle-making at Candlefish or King Street shopping.',
+      'Departures with the kind of tired that means you did the weekend right.',
+    ],
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Charleston Bachelorette Weekend Itinerary — Coastal Classy',
+  description: 'A sample 3-day Charleston bachelorette weekend: boat charters, rooftop cocktails, Southern fine dining, and a curated coastal aesthetic.',
+  author: { '@type': 'Organization', name: 'The Party Architect' },
+  publisher: { '@type': 'Organization', name: 'The Party Architect' },
+};
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title="Charleston Bachelorette Itinerary — The Party Architect"
+    description="A curated 3-day Charleston bachelorette weekend: boat charters, rooftop cocktails, Southern fine dining. Custom-planned by The Party Architect."
+    ogType="article"
+    jsonLd={jsonLd}
+  />
+
+  <main>
+    <DestinationHero
+      destination="Charleston"
+      tagline="Coastal Classy"
+      vibe="Classic & classy"
+      groupSize="Group of 8"
+      budget="$1,000–$1,800/person"
+      days="3 days"
+      heroImage="https://images.unsplash.com/photo-1587502536575-6dfba0a6e017?w=1920&q=80&auto=format&fit=crop"
+      heroImageAlt="Charleston waterfront row houses in warm afternoon light"
+    />
+
+    <section class="bg-blush/50 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto px-6 md:px-8">
+        <p class="font-sans text-base md:text-lg text-ink leading-relaxed mb-6">
+          Charleston is the bachelorette destination that feels grown-up without losing the fun. Think golden-hour boat rides, cobblestone streets, world-class restaurants, and just enough nightlife to keep it interesting. This is the weekend for the bride who wants it beautiful, curated, and effortless.
+        </p>
+        <p class="font-sans text-base md:text-lg text-ink leading-relaxed">
+          Below is a sample 3-day weekend I'd design — every detail tailored to your group's size, budget, and vibe. This is a concept itinerary to show you what a planned weekend looks like. Yours would be fully custom.
+        </p>
+      </div>
+    </section>
+
+    <Itinerary days={days} />
+
+    <section class="bg-blush/50 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto px-6 md:px-8">
+        <h2 class="font-display text-2xl md:text-3xl font-medium text-ink mb-8">Where to Stay</h2>
+        <div class="space-y-4 font-sans text-base text-ink leading-relaxed">
+          <p><strong class="font-semibold">The Dewberry</strong> — boutique luxury in the heart of downtown. Rooftop bar on-site. ~$500/night.</p>
+          <p><strong class="font-semibold">The Ryder Hotel</strong> — cool, design-forward, great King Street location. ~$350/night.</p>
+          <p><strong class="font-semibold">French Quarter Airbnb</strong> — best for groups of 8+ who want to be together. Shared kitchen, courtyard vibes.</p>
+        </div>
+
+        <h2 class="font-display text-2xl md:text-3xl font-medium text-ink mt-12 mb-8">The Aesthetic</h2>
+        <p class="font-sans text-base text-ink leading-relaxed">
+          Blush, cream, sage, and gold. Monogrammed welcome bags, beach-day disposable cameras, ros&eacute; on the boat. Charleston does elegant effortlessly — lean into it.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 text-center">
+      <div class="max-w-xl mx-auto px-6 md:px-8">
+        <h2 class="font-display text-2xl md:text-3xl font-medium text-ink mb-4">Love this vibe?</h2>
+        <p class="font-sans text-base text-muted leading-relaxed mb-8">
+          This is just a sample. I'll build your Charleston weekend around your group, your budget, and your energy.
+        </p>
+        <a
+          href="/#contact"
+          class="inline-block bg-rose text-cream font-sans font-semibold tracking-wide
+                 py-3 px-8 rounded-lg
+                 hover:bg-rose/90 hover:scale-[1.02]
+                 active:scale-[0.99]
+                 transition-all duration-200"
+        >
+          Start planning
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

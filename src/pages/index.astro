@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import Hero from '../components/Hero.astro';
+import WhatIDo from '../components/WhatIDo.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import About from '../components/About.astro';
+import InquiryForm from '../components/InquiryForm';
+import Footer from '../components/Footer.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'The Party Architect',
+  description: 'Custom bachelorette weekend planning — itineraries, themes, restaurants, and every detail, designed end-to-end.',
+  url: 'https://the-party-architect.com',
+  email: 'kat@the-party-architect.com',
+  sameAs: ['https://instagram.com/__thepartyarchitect'],
+  makesOffer: {
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      name: 'Signature Bachelorette Weekend Design',
+      description: 'A fully styled bachelorette weekend, planned end-to-end with custom itinerary, destination guidance, restaurant and activity recommendations, and full theme concept.',
+    },
+  },
+};
+
+const destinations = [
+  {
+    name: 'Charleston',
+    tagline: 'Coastal Classy',
+    href: '/destinations/charleston',
+    vibe: 'Golden-hour boat rides, cobblestone streets, world-class dining.',
+    image: 'https://images.unsplash.com/photo-1684277770294-5564b0ebe291?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Charleston tree-lined street with historic buildings',
+  },
+  {
+    name: 'Nashville',
+    tagline: 'Boots & Confetti',
+    href: '/destinations/nashville',
+    vibe: 'Live music, rooftop bars, pontoon cruises, and Southern brunch.',
+    image: 'https://images.unsplash.com/photo-1588897159261-328f3f53715f?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Nashville Broadway neon signs at night',
+  },
+  {
+    name: 'Palm Springs',
+    tagline: 'Pool Days & Slow Mornings',
+    href: '/destinations/palm-springs',
+    vibe: 'Private pool house, spa afternoons, desert golden hour.',
+    image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80&auto=format&fit=crop',
+    imageAlt: 'Turquoise pool surrounded by palm trees in warm sunlight',
+  },
+];
+---
+
+<BaseLayout>
+  <SEO
+    slot="head"
+    title="The Party Architect — Bachelorette Weekend Planning"
+    description="Custom bachelorette weekends planned end-to-end. Itineraries, themes, restaurants, and every detail — you just show up."
+    jsonLd={jsonLd}
+  />
+
+  <main>
+    <Hero />
+    <WhatIDo />
+    <HowItWorks />
+
+    <!-- Destinations preview -->
+    <section class="py-16 md:py-24" aria-label="Sample weekends">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="mb-10 md:mb-14">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="h-px w-12 bg-rose"></div>
+            <p class="font-sans text-xs tracking-[0.15em] uppercase text-rose font-semibold">Sample Weekends</p>
+          </div>
+          <h2 class="font-display text-4xl md:text-6xl font-normal text-ink leading-tight max-w-3xl">
+            See what a weekend<br />could look like.
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {destinations.map((dest) => (
+            <a href={dest.href}
+               class="group relative bg-white/50 backdrop-blur-sm border border-champagne/20 rounded-3xl overflow-hidden
+                      hover:border-rose/30 hover:shadow-xl hover:shadow-rose/5
+                      transition-all duration-500 block">
+              <!-- Destination image -->
+              <div class="h-48 md:h-56 overflow-hidden relative">
+                <img
+                  src={dest.image}
+                  alt={dest.imageAlt}
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/80"></div>
+              </div>
+              <div class="p-8 md:p-10 relative">
+                <div class="absolute top-8 right-8 md:top-10 md:right-10">
+                  <svg class="w-5 h-5 text-champagne/30 group-hover:text-rose/50 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </div>
+                <p class="font-sans text-xs tracking-[0.15em] uppercase text-champagne font-semibold mb-3">{dest.tagline}</p>
+                <h3 class="font-display text-3xl md:text-4xl font-normal text-ink mb-4 group-hover:text-rose transition-colors duration-300">{dest.name}</h3>
+                <p class="font-sans text-sm text-muted leading-relaxed">{dest.vibe}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <About />
+
+    <!-- Inquiry form section -->
+    <section id="contact" class="relative py-16 md:py-24 bg-blush/40 overflow-hidden" aria-label="Inquiry form">
+      <!-- Decorative elements -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute -top-24 -right-24 w-[400px] h-[400px] rounded-full bg-rose/5 blur-3xl"></div>
+        <div class="absolute -bottom-16 -left-16 w-[300px] h-[300px] rounded-full bg-champagne/10 blur-3xl"></div>
+      </div>
+
+      <div class="relative max-w-2xl mx-auto px-6 md:px-8">
+        <div class="text-center mb-10">
+          <div class="flex items-center justify-center gap-4 mb-6">
+            <div class="h-px w-8 bg-rose/40"></div>
+            <p class="font-sans text-xs tracking-[0.15em] uppercase text-rose font-semibold">Get in Touch</p>
+            <div class="h-px w-8 bg-rose/40"></div>
+          </div>
+          <h2 class="font-display text-4xl md:text-5xl font-normal text-ink leading-tight mb-4">
+            Let's plan your weekend.
+          </h2>
+          <p class="font-sans text-base md:text-lg text-muted leading-relaxed max-w-md mx-auto">
+            Tell me about your group, your vibe, and what you're dreaming up. I'll take it from there.
+          </p>
+        </div>
+        <InquiryForm client:visible />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
