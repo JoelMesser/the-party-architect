@@ -1,43 +1,40 @@
-# Astro Starter Kit: Minimal
+# The Party Architect
 
-```sh
-npm create astro@latest -- --template minimal
+Marketing site for [The Party Architect](https://the-party-architect.com), a bachelorette weekend planning service. A landing page, destination guides (Charleston, Nashville, Palm Springs), and an inquiry form that emails the planner and sends the client a confirmation.
+
+## Stack
+
+- [Astro 6](https://astro.build) with React islands for the interactive form
+- [Tailwind CSS v4](https://tailwindcss.com) via `@tailwindcss/vite`
+- `@astrojs/sitemap` for the sitemap
+- [Cloudflare Pages](https://pages.cloudflare.com), with one Pages Function (`functions/api/inquiry.ts`) handling form submissions
+- [Resend](https://resend.com) for email
+
+## Develop
+
+Requires Node 22.12 or newer.
+
+```bash
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # static output in dist/
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Configuration
 
-## 🚀 Project Structure
+The inquiry function needs one secret, set in the Cloudflare Pages project (or in `.dev.vars` for local `wrangler pages dev`):
 
-Inside of your Astro project, you'll see the following folders and files:
+| Variable | Purpose |
+|---|---|
+| `RESEND_API_KEY` | Sends the inquiry notification and the client confirmation |
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+## Layout
+
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+src/
+  pages/            index + destinations/{charleston,nashville,palm-springs}
+  components/       page sections, SEO head, InquiryForm (React)
+  layouts/          BaseLayout
+functions/api/      inquiry.ts (Pages Function)
+```
